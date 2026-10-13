@@ -13,8 +13,17 @@ ST_DIR="$HOME/.config/omarchy-things"
 BASHRC="$HOME/.bashrc"
 MARK_START="# >>> omarchy-things greeting >>>"
 MARK_END="# <<< omarchy-things greeting <<<"
-HOOK="$HOME/.config/omarchy/hooks/theme-set.d/theme-set.sh"
+HOOK="$HOME/.config/omarchy/hooks/theme-set.d/omarchy-things-theme-set.sh"
+OLD_HOOK="$HOME/.config/omarchy/hooks/theme-set.d/theme-set.sh"
 FF_CONF="$HOME/.config/fastfetch/config.jsonc"
+
+# An earlier version installed the hook as plain theme-set.sh, a name another
+# theme or the user could also use. Remove that copy only if it is ours.
+remove_old_hook() {
+  if [[ -f $OLD_HOOK ]] && grep -qF "theme-set hook for the OmarchyThings theme" "$OLD_HOOK"; then
+    rm -f "$OLD_HOOK"
+  fi
+}
 
 # An earlier version linked a custom fastfetch config, which stops Omarchy from
 # sizing the About window. Undo that if it is still there.
@@ -35,9 +44,10 @@ remove_bashrc_block() {
 if [[ ${1:-} == --uninstall ]]; then
   remove_bashrc_block
   rm -f "$HOME/.config/cliamp/themes/omarchy-things.toml" "$HOOK"
+  remove_old_hook
   remove_old_fastfetch_link
   # give Omarchy its own About logo back
-  bash "$ROOT/hooks/theme-set.sh" "not-ours"
+  bash "$ROOT/hooks/omarchy-things-theme-set.sh" "not-ours"
   rm -rf "$ST_DIR"
   echo "OmarchyThings extras removed. Open a new terminal to see the change."
   exit 0
@@ -59,7 +69,8 @@ $MARK_START
 $MARK_END
 BLOCK
 
-omarchy hook install theme-set "$ROOT/hooks/theme-set.sh" >/dev/null
+remove_old_hook
+omarchy hook install theme-set "$ROOT/hooks/omarchy-things-theme-set.sh" >/dev/null
 # Apply the hook to whatever theme is active right now.
 "$HOOK" "$(cat "$HOME/.local/state/omarchy/current/theme.name" 2>/dev/null || true)"
 

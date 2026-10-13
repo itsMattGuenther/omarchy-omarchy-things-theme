@@ -1,6 +1,6 @@
 #!/bin/bash
 # Omarchy theme-set hook for the OmarchyThings theme.
-# Installed by extras/install.sh with: omarchy hook install theme-set hooks/theme-set.sh
+# Installed by extras/install.sh with: omarchy hook install theme-set hooks/omarchy-things-theme-set.sh
 # Runs after every theme change with the new theme slug in $1.
 #
 # When our theme is selected: switch cliamp to its OmarchyThings theme and put

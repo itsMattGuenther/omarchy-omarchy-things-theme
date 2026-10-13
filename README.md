@@ -69,10 +69,14 @@ What it changes:
 - copies files into `~/.config/omarchy-things/` and `~/.config/cliamp/themes/`
 - adds one marked block at the end of `~/.bashrc` (a backup is kept as
   `.bashrc.bak.omarchy-things`)
-- installs a theme hook that, whenever this theme is active, switches cliamp
-  to its OmarchyThings look and puts the Demogorgon in Omarchy's About logo
-  slot (`~/.config/omarchy/branding/about.txt`, original kept as a backup).
+- installs a theme hook, `omarchy-things-theme-set.sh`, that, whenever this
+  theme is active, switches cliamp to its OmarchyThings look and puts the
+  Demogorgon in Omarchy's About logo slot
+  (`~/.config/omarchy/branding/about.txt`, original kept as a backup).
   Pick another theme and both go back.
+
+The hook is named after the theme rather than `theme-set.sh`, so it sits
+alongside other themes' hooks instead of overwriting them.
 
 The greeting and the Demogorgon only show while this theme is the active one,
 so other themes are left alone.
