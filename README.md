@@ -20,7 +20,7 @@ always.
 ## 📦 Install
 
 ```bash
-omarchy theme install https://github.com/matthewguenther/omarchy-omarchy-things-theme.git
+omarchy theme install https://github.com/itsMattGuenther/omarchy-omarchy-things-theme.git
 ```
 
 The theme is applied right away. Later, switch with:
@@ -52,55 +52,26 @@ alone. I would rather a theme did not go anywhere near your boot setup.
 
 ## 👾 Extras (optional)
 
-![Eleven greeting and the Demogorgon About screen](docs/preview-extras.png)
-
-![cliamp music player](docs/preview-cliamp.png)
+![Eleven greeting and the Demogorgon About screen](https://github.com/itsMattGuenther/omarchy-theme-extras/raw/main/omarchy-things/docs/preview-extras.png)
 
 A Demogorgon on the About screen, Eleven greeting you in every new terminal,
-and a matching theme for the cliamp music player. Omarchy cannot install
-these from a theme, so there is a one-shot script:
-
-```bash
-~/.config/omarchy/themes/omarchy-things/extras/install.sh
-```
-
-What it changes:
-
-- copies files into `~/.config/omarchy-things/` and `~/.config/cliamp/themes/`
-- adds one marked block at the end of `~/.bashrc` (a backup is kept as
-  `.bashrc.bak.omarchy-things`)
-- installs a theme hook, `omarchy-things-theme-set.sh`, that, whenever this
-  theme is active, switches cliamp to its OmarchyThings look and puts the
-  Demogorgon in Omarchy's About logo slot
-  (`~/.config/omarchy/branding/about.txt`, original kept as a backup).
-  Pick another theme and both go back.
-
-The hook is named after the theme rather than `theme-set.sh`, so it sits
-alongside other themes' hooks instead of overwriting them.
-
-The greeting and the Demogorgon only show while this theme is the active one,
-so other themes are left alone.
-
-To remove all of it:
-
-```bash
-~/.config/omarchy/themes/omarchy-things/extras/install.sh --uninstall
-```
+and a matching theme for the cliamp music player. A theme can't ship the
+script that puts these in place, so they live in
+[omarchy-theme-extras](https://github.com/itsMattGuenther/omarchy-theme-extras/tree/main/omarchy-things), with install and
+uninstall steps.
 
 ## 🛠️ Hacking on it
 
-- `colors.toml` is the whole palette. Check readability after edits with
-  `python3 docs/contrast.py colors.toml`.
+- `colors.toml` is the whole palette. The contrast checker for it lives with
+  the [extras](https://github.com/itsMattGuenther/omarchy-theme-extras/tree/main/omarchy-things).
 - `docs/OMARCHY-THEME-REFERENCE.md` explains how Omarchy turns that file into
   every app config, and which files a git-installed theme is not allowed to
   ship.
-- `extras/tools/make-unlock.sh` regenerates `preview-unlock.png`, the tile
-  Omarchy shows in its **Style > Unlock** picker.
+- `preview-unlock.png` is the tile Omarchy shows in its **Style > Unlock**
+  picker. The script that regenerates it lives with the extras too.
 
 ## 🙏 Credits
 
-- Demogorgon and Eleven Braille art from
-  [emojicombos.com](https://emojicombos.com/stranger-things-ascii-art).
 - Built on Omarchy's theme system by DHH and the Omarchy community.
 - Made with help from Claude and Grok. Mentioned here because I'd rather be
   transparent about it.

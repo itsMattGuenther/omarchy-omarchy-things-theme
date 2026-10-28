@@ -1,7 +1,7 @@
 # OmarchyThings palette (inspired by Stranger Things)
 # Built from the Season 5 poster in colors/: poster black, blood-red sky,
 # a thin teal horizon, and amber city lights. Dark first, readable always.
-# Check readability with: python3 docs/contrast.py colors.toml
+# Check readability with omarchy-things/tools/contrast.py from github.com/itsMattGuenther/omarchy-theme-extras
 mode = "dark"
 
 accent = "#de3d3a"
